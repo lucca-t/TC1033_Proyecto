@@ -1,60 +1,35 @@
-#ifndef LIBRO_H
-#define LIBRO_H
+// Libro.h
 
 #include <iostream>
 using namespace std;
 
-class Libro {
+#ifndef LIBRO_H
+#define LIBRO_H
+
+#include "LibraryItem.h"
+
+
+class Libro : public LibraryItem {
 private:
-    string titulo;       // Título del libro
-    string autor;        // Autor del libro
-    string isbn;         // Número ISBN del libro
-    bool estaDisponible; // Indica si el libro está disponible para prestar
+    string ISBN;
+    string autor;
+    string genero;
 
 public:
-    // Constructor
-    Libro(string titulo, string autor, string isbn) {
-        this->titulo = titulo;
-        this->autor = autor;
-        this->isbn = isbn;
-        this->estaDisponible = true;  // Por defecto, el libro está disponible
-    }
+    Libro(string id, bool estaDisponible, string ISBN, string titulo, string autor, string genero)
+        : LibraryItem(titulo, id, estaDisponible), ISBN(ISBN), autor(autor), genero(genero) {}
 
-    // Métodos Getters
-    // Métodos Getters
-    string getTitulo() { return titulo; }
-    string getAutor() { return autor; }
-    string getIsbn() { return isbn; }
-    bool getEstaDisponible() { return estaDisponible; }
+  
+    string getAutor()  { return autor; }
+    string getISBN()  { return ISBN; }
 
-    // Métodos Setters
-    void setTitulo(string titulo) { this->titulo = titulo; }
-    void setAutor(string autor) { this->autor = autor; }
-    void setIsbn(string isbn) { this->isbn = isbn; }
-    void setEstaDisponible(bool estaDisponible) { this->estaDisponible = estaDisponible; }
-
-    // Método para verificar disponibilidad
-
-        // Método para alquilar un libro
-    void alquilarLibro() {
-        if (estaDisponible) {
-            estaDisponible = false;
-        } else {
-            cout << "El libro '" << titulo << "' ya está alquilado." << endl;
-        }
-    }
-    void devolverLibro() {
-        estaDisponible = true;
-    }
-
-    // Método para mostrar los detalles del libro (lo definiremos más adelante)
-    void mostrarDetallesLibro() const {
-        cout << "Título: " << titulo << ", Autor: " << autor << ", ISBN: " << isbn;
-        if (estaDisponible)
-            cout << " (Disponible)" << endl;
-        else
-            cout << " (No disponible)" << endl;
+    void mostrarDetallesLibro() {
+        cout << "Titulo: " << titulo << "\n"
+                  << "Autor: " << autor << "\n"
+                  << "ISBN: " << ISBN << "\n"
+                  << "Género: " << genero << "\n"
+                  << "Disponible: " << (estaDisponible ? "Sí" : "No") << "\n";
     }
 };
 
-#endif
+#endif // LIBRO_H
