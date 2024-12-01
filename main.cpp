@@ -1,13 +1,14 @@
-#include "Libro.h"
+#include "Libro.h" // Incluir clases necesarias 
+#include "Revista.h"
 #include "Miembro.h"
 #include "Biblioteca.h"
-
 
 #include <iostream>
 using namespace std;
 
-main(){
-   vector<Libro> libros = {
+int main(){
+    // Crear lista de libros
+    vector<Libro> libros = {
     Libro("1001", true, "978-0-452-28423-4", "1984", "George Orwell", "Dystopia"),
     Libro("1002", true, "978-3-16-148410-0", "Cien años de soledad", "Gabriel García Márquez", "Fantasia"),
     Libro("1003", true, "978-1-56619-907-9", "Don Quijote de la Mancha", "Miguel de Cervantes", "Clasico"),
@@ -18,6 +19,8 @@ main(){
     Libro("1008", true, "978-0-06-231500-7", "El alquimista", "Paulo Coelho", "Filosofia"),
     Libro("1009", true, "978-0-545-01022-1", "Harry Potter y la piedra filosofal", "J.K. Rowling", "Fantasia"),
 };  
+
+    // Crear lista de revistas
 vector<Revista> revistas = {
     Revista("5678", true, "Shape Shifter", "2022", "Vogue"),
     Revista("2345", true, "Time", "2023", "Time Inc."),
@@ -27,7 +30,8 @@ vector<Revista> revistas = {
     Revista("1234", true, "Sports Illustrated", "2020", "Maven")
 };
 
-    Biblioteca biblio = Biblioteca(libros, revistas); // Crear biblioteca con las listas de los contenidos
+    // Crear biblioteca con las listas de los contenidos
+    Biblioteca biblio = Biblioteca(libros, revistas); 
     cout << "------------" << endl;
     
     Miembro miembro1("Lucca T",20);
@@ -35,7 +39,7 @@ vector<Revista> revistas = {
     Miembro miembro2 = Miembro("Juan Gonzalez", 38);  // crear y agregar los miembros
     biblio.registrarMiembro(miembro2);
 
-
+    
     cout << "-----------------" << endl; // todo fue agregado correctamente
     biblio.mostrarItems();
     cout << "-----------------" << endl;
