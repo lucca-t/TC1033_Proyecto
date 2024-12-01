@@ -35,7 +35,7 @@ public:
 
     // Establecer el estado de disponibilidad
     void setDisponibilidad(bool disponibilidad) { 
-        estaDisponible = disponibilidad; 
+        this->estaDisponible = disponibilidad; 
     }
 
     // Marcar el ítem como alquilado (no disponible)
